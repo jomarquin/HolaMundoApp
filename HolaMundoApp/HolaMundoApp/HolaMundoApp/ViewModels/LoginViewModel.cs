@@ -1,4 +1,5 @@
-﻿using HolaMundoApp.Views;
+﻿using HolaMundoApp.Resx;
+using HolaMundoApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -93,9 +94,11 @@ namespace HolaMundoApp.ViewModels
             }
             else
             {
-                ShowMessage = true;
-                ColorMessage = Color.Red;
-                WelcomeMessage = "Usuario inválido";
+                //ShowMessage = true;
+                //ColorMessage = Color.Red;
+                //WelcomeMessage = "Usuario inválido";
+                await Application.Current.MainPage.DisplayAlert(AppResources.LoginPageInvalidLoginTitle, 
+                    AppResources.LoginPageInvalidLoginMessage, AppResources.OkText);
             }
         }
 
