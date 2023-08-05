@@ -89,7 +89,7 @@ namespace HolaMundoApp.ViewModels
             if (ValidateFields())
             {
                 ShowMessage = false;
-                await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+                await Shell.Current.GoToAsync($"//{nameof(ClientsPage)}");
             }
             else
             {

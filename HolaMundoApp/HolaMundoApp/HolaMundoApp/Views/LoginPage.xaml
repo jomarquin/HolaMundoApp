@@ -4,6 +4,10 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:HolaMundoApp.ViewModels"
+             xmlns:local="clr-namespace:HolaMundoApp;assembly=HolaMundoApp"
+             xmlns:helpers="clr-namespace:HolaMundoApp.Helpers"
+             helpers:ViewModelLocator.AutoWireViewModel="True"
+             x:DataType="viewModels:LoginViewModel"
              mc:Ignorable="d"
              x:Class="HolaMundoApp.Views.LoginPage"
              Shell.NavBarIsVisible="False">
@@ -12,8 +16,9 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Entry Text="{Binding Username}" Placeholder="Username" Margin="10" /> <!--JAMQ22072023-->
-            <Entry Text="{Binding Password}" Placeholder="Password" IsPassword="True" Margin="10"/> <!--JAMQ22072023-->
+            <Image Source="{local:ImageResource HolaMundoApp.Resources.Images.icon_movil.png}" WidthRequest="200" HeightRequest="200" />
+            <Entry Text="{Binding Username}" Placeholder="Username" Margin="10" TextColor="Black"  /> <!--JAMQ22072023-->
+            <Entry Text="{Binding Password}" Placeholder="Password" IsPassword="True" Margin="10" TextColor="Black"/> <!--JAMQ22072023-->
             <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
             <!--<Button Text="Iniciar sesión" Clicked="OnLoginButtonClicked" Margin="10"/>-->
             <Label Text="{Binding WelcomeMessage}" FontSize="Subtitle" TextColor="{Binding ColorMessage}" HorizontalOptions="Center" Margin="0,30,0,0" IsVisible="{Binding ShowMessage}"/>
