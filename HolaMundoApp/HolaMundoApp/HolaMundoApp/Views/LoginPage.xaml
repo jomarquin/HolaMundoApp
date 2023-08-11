@@ -11,17 +11,13 @@
              mc:Ignorable="d"
              x:Class="HolaMundoApp.Views.LoginPage"
              Shell.NavBarIsVisible="False">
-    <ContentPage.BindingContext>
-        <viewModels:LoginViewModel />
-    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
             <Image Source="{local:ImageResource HolaMundoApp.Resources.Images.icon_movil.png}" WidthRequest="200" HeightRequest="200" />
-            <Entry Text="{Binding Username}" Placeholder="Username" Margin="10" TextColor="Black"  /> <!--JAMQ22072023-->
+            <Entry Text="{Binding UserName}" Placeholder="UserName" Margin="10" TextColor="Black"  /> <!--JAMQ22072023-->
             <Entry Text="{Binding Password}" Placeholder="Password" IsPassword="True" Margin="10" TextColor="Black"/> <!--JAMQ22072023-->
             <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
             <!--<Button Text="Iniciar sesión" Clicked="OnLoginButtonClicked" Margin="10"/>-->
-            <Label Text="{Binding WelcomeMessage}" FontSize="Subtitle" TextColor="{Binding ColorMessage}" HorizontalOptions="Center" Margin="0,30,0,0" IsVisible="{Binding ShowMessage}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

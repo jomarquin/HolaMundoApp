@@ -1,4 +1,5 @@
 ﻿using HolaMundoApp.Resx;
+using HolaMundoApp.Services;
 using HolaMundoApp.Views;
 using System;
 using System.Collections.Generic;
@@ -9,109 +10,52 @@ namespace HolaMundoApp.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
+        private readonly IAccountService _accountService;
+
+        public LoginViewModel(IAccountService accountService)
+        {
+            _accountService = accountService;
+            LoginCommand = new Command(OnLoginClicked);
+        }
+
         private string _username;
         private string _password;
         private bool _showMessage;
         private string _welcomeMessage;
         private Color _colorMessage;
 
-        public string Username 
-        { 
-            get => _username;
-            set 
-            {
-                if (_username != value)
-                {
-                    _username = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-        public string Password
-        {
-            get => _password;
-            set
-            {
-                if (_password != value)
-                {
-                    _password = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-        public bool ShowMessage
-        {
-            get => _showMessage;
-            set
-            {
-                if (_showMessage != value)
-                {
-                    _showMessage = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-        public string WelcomeMessage
-        {
-            get => _welcomeMessage;
-            set
-            {
-                if (_welcomeMessage != value)
-                {
-                    _welcomeMessage = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public Color ColorMessage
-        {
-            get => _colorMessage;
-            set
-            {
-                if (_colorMessage != value)
-                {
-                    _colorMessage = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
+        public string UserName { get => _username; set => SetProperty(ref _username, value); }
+        public string Password { get => _password; set => SetProperty(ref _password, value); }
 
 
-        public Command LoginCommand { get; }    
 
-        public LoginViewModel()
-        {
-            LoginCommand = new Command(OnLoginClicked);
-        }
+        public Command LoginCommand { get; }
+
 
         private async void OnLoginClicked(object obj)
         {
-            if (ValidateFields())
+            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+            if (ValidateFields() && await _accountService.LoginAsync(UserName, Password))
             {
-                ShowMessage = false;
                 await Shell.Current.GoToAsync($"//{nameof(ClientsPage)}");
             }
             else
             {
-                //ShowMessage = true;
-                //ColorMessage = Color.Red;
-                //WelcomeMessage = "Usuario inválido";
-                await Application.Current.MainPage.DisplayAlert(AppResources.LoginPageInvalidLoginTitle, 
-                    AppResources.LoginPageInvalidLoginMessage, AppResources.OkText);
+                await Application.Current.MainPage.DisplayAlert(
+                        AppResources.LoginPageInvalidLoginTitle,
+                        AppResources.LoginPageInvalidLoginMessage,
+                        AppResources.OkText);
             }
         }
 
         private bool ValidateFields()
         {
-            if (!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password))
-            {
-                return true;
-            }
-            else
+            if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
             {
                 return false;
             }
+            return true;
         }
     }
+
 }

@@ -12,7 +12,7 @@ using Xamarin.Forms.Internals;
 
 namespace HolaMundoApp
 {
-    internal class Startup
+    public class Startup
     {
         private const string INTERFACE_PREFIX = "I";
         private const string SERVICES_NAMESPACE = "HolaMundoApp.Services";
@@ -35,6 +35,10 @@ namespace HolaMundoApp
             }));
 
             serviceCollection.AddRefitClient<IClientApi>(refitSettings)
+                .ConfigureHttpClient(c => c.BaseAddress = new Uri(Settings.ApiBaseUri))
+                .AddHttpMessageHandler<BaseAddressHandler>();
+
+            serviceCollection.AddRefitClient<IAccountApi>(refitSettings)
                 .ConfigureHttpClient(c => c.BaseAddress = new Uri(Settings.ApiBaseUri))
                 .AddHttpMessageHandler<BaseAddressHandler>();
 

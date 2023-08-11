@@ -6,7 +6,7 @@ namespace HolaMundoApp
 {
     public static class Settings
     {
-        public const string ApiBaseUri = "https://192.168.166.6:5000/api";
+        public const string ApiBaseUri = "http://192.168.1.71:5000/api";
     }
 
 }

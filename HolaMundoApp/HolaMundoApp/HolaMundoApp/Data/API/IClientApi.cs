@@ -9,6 +9,7 @@ namespace HolaMundoApp.Data.API
     public interface IClientApi
     {
         [Get("/Clients")]
+        //Task<List<Client>> GetClients();
         Task<List<Client>> GetClientsAsync();
     }
 

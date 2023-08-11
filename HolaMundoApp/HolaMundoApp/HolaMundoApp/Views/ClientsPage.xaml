@@ -8,7 +8,8 @@
              xmlns:controls="clr-namespace:HolaMundoApp.Controls"
              x:DataType="viewModels:ClientsViewModel"
              helpers:ViewModelLocator.AutoWireViewModel="True"
-             x:Class="HolaMundoApp.Views.ClientsPage">
+             x:Class="HolaMundoApp.Views.ClientsPage"
+             Padding="10,10">
     <ContentPage.Behaviors>
         <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
     </ContentPage.Behaviors>
@@ -68,6 +69,12 @@
             <CollectionView ItemsSource="{Binding Clients}"
                             EmptyView="No Clients to display"                            
                             ItemTemplate="{StaticResource ClientTemplateSelector}">
+                            <CollectionView.Header>
+                                <Grid ColumnDefinitions="*,*">
+                                    <Label Text="Name" TextColor="Black"/>
+                                    <Label Grid.Column="1" Text="DNA" TextColor="Black"/>
+                                </Grid>
+                            </CollectionView.Header>
             </CollectionView>
         </StackLayout>
     </ContentPage.Content>
