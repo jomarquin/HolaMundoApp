@@ -11,6 +11,7 @@ namespace HolaMundoApp
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(ClientPage), typeof(ClientPage));
 
         }
 
