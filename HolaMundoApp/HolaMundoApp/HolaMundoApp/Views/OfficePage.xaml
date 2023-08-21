@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:viewModels="clr-namespace:HolaMundoApp.ViewModels"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:DataType="viewModels:OfficeViewModel"
              Title="Detalle Oficina"
              x:Class="HolaMundoApp.Views.OfficePage">
@@ -11,28 +12,37 @@
     </ContentPage.Behaviors>
     <ContentPage.Content>
         <StackLayout Padding="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <Label Text="{Binding Office.NameOffice}"
-                VerticalOptions="Start" 
-                HorizontalOptions="Center" 
-                Style="{StaticResource Heading1}"/>
-
-            <Grid ColumnDefinitions="4.5*,1*,4.5*">
-                <Label Grid.Column="0" Text="{Binding Office.City}" HorizontalOptions="End"/>
-                <Label Grid.Column="1" Text=" - " HorizontalOptions="Center"/>
-                <Label Grid.Column="2" Text="{Binding Office.Department}" HorizontalOptions="Start"/>
-            </Grid>
-            <Grid ColumnDefinitions="3*,7*">
-                <Label Grid.Column="0" Text="Dirección: "/>
-                <Label Grid.Column="1" Text="{Binding Office.Address}"/>
-            </Grid>
-            <Grid ColumnDefinitions="3*,7*">
-                <Label Grid.Column="0" Text="Teléfono: "/>
-                <Label Grid.Column="1" Text="{Binding Office.Telephone}"/>
-            </Grid>
-            <!--Separador-->
-            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Black"/>
-            <Label Text="Horario de atención:"/>
-            <Label Text="{Binding Office.OfficeHours}"/>
-        </StackLayout>
+            
+            <Frame CornerRadius="8"
+                   Margin="2"
+                   Padding="10"
+                   HasShadow="True">
+                <StackLayout>
+                    <Label Text="{Binding Office.NameOffice}"
+                            VerticalOptions="Start" 
+                            HorizontalOptions="Center" 
+                            Style="{StaticResource Heading1}"/>
+                    <Grid ColumnDefinitions="4.5*,1*,4.5*">
+                        <Label Grid.Column="0" Text="{Binding Office.City}" HorizontalOptions="End"/>
+                        <Label Grid.Column="1" Text=" - " HorizontalOptions="Center"/>
+                        <Label Grid.Column="2" Text="{Binding Office.Department}" HorizontalOptions="Start"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="3*,7*">
+                        <Label Grid.Column="0" Text="Dirección: "/>
+                        <Label Grid.Column="1" Text="{Binding Office.Address}"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="3*,7*">
+                        <Label Grid.Column="0" Text="Teléfono: "/>
+                        <Label Grid.Column="1" Text="{Binding Office.Telephone}"/>
+                    </Grid>
+                    <!--Separador-->
+                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Black"/>
+                    <Label Text="Horario de atención:"/>
+                    <Label Text="{Binding Office.OfficeHours}"/>
+                </StackLayout>
+            </Frame>
+            <maps:Map x:Name="OfficeLocationMap" IsShowingUser="True"/>
+        </StackLayout>       
+        
     </ContentPage.Content>
 </ContentPage>

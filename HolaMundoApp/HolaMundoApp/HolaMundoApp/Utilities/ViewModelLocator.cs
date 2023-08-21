@@ -1,10 +1,9 @@
-﻿using HolaMundoApp;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Reflection;
 using Xamarin.Forms;
 
-namespace HolaMundoApp.Helpers
+namespace HolaMundoApp.Utilities
 {
     public class ViewModelLocator
     {
