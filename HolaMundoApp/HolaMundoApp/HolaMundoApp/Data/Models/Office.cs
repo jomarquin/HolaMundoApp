@@ -13,6 +13,8 @@ namespace HolaMundoApp.Data.Models
         public string OfficeHours { get; set; }
         public string Department { get; set; }
         public string City { get; set; }
+        public string OfficeType { get; set; }
+        public string UrlImage { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
     }

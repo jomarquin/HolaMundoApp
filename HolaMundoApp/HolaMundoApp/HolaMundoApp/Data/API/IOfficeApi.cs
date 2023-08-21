@@ -13,7 +13,7 @@ namespace HolaMundoApp.Data.API
         [Get("/Offices")]
         Task<List<Office>> GetOfficesAsync();
 
-        //[Get("/Offices/{id}")]
-        //Task<ClientDetailDto> GetClient(long id);
+        [Get("/Offices/{id}")]
+        Task<Office> GetOffice(long id);
     }
 }

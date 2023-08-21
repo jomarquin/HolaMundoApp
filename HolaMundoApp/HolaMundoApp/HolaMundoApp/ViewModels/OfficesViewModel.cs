@@ -18,7 +18,7 @@ namespace HolaMundoApp.ViewModels
         public OfficesViewModel(IOfficeService officeService)
         {
             AppearingCommand = new AsyncCommand(async () => await OnAppearingAsync());
-            ClientTappedCommand = new AsyncCommand<Office>(OnClientTapped);
+            OfficeTappedCommand = new AsyncCommand<Office>(OnOfficeTapped);
             Title = "Offices";
             _officeService = officeService;
         }
@@ -27,7 +27,7 @@ namespace HolaMundoApp.ViewModels
         public ObservableRangeCollection<Office> Offices { get; set; } = new ObservableRangeCollection<Office>();
 
         public ICommand AppearingCommand { get; set; }
-        public ICommand ClientTappedCommand { get; set; }
+        public ICommand OfficeTappedCommand { get; set; }
         #endregion
 
         private async Task OnAppearingAsync()
@@ -56,14 +56,14 @@ namespace HolaMundoApp.ViewModels
             }
         }
 
-        private Task OnClientTapped(Office office)
+        private Task OnOfficeTapped(Office office)
         {
             if (office == null)
             {
                 return Task.CompletedTask;
             }
 
-            return Shell.Current.GoToAsync($"{nameof(ClientPage)}?{nameof(ClientViewModel.ClientId)}={office.Id}");
+            return Shell.Current.GoToAsync($"{nameof(OfficePage)}?{nameof(OfficeViewModel.OfficeId)}={office.Id}");
         }
     }
 }

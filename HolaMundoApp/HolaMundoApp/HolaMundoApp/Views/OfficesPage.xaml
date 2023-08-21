@@ -1,12 +1,159 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HolaMundoApp.Views.OfficesPage">
+             xmlns:viewModels="clr-namespace:HolaMundoApp.ViewModels"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:helpers="clr-namespace:HolaMundoApp.Helpers"
+             xmlns:models="clr-namespace:HolaMundoApp.Data.Models"
+             xmlns:local="clr-namespace:HolaMundoApp;assembly=HolaMundoApp"
+             xmlns:controls="clr-namespace:HolaMundoApp.Controls"
+             x:DataType="viewModels:OfficesViewModel"
+             helpers:ViewModelLocator.AutoWireViewModel="True"
+             x:Class="HolaMundoApp.Views.OfficesPage"
+             Title="Oficinas y CNB"
+             Padding="10,10">
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
+    </ContentPage.Behaviors>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:DataType="models:Office"
+                x:Key="ClientDefaultTemplate">
+                <StackLayout>
+                    <Frame CornerRadius="10"
+                           Margin="10"
+                           Padding="10"
+                           HasShadow="True">
+
+                        <StackLayout Orientation="Vertical">
+                            <Image Source="{Binding UrlImage}" HeightRequest="200" Aspect="AspectFill"/>
+                            <Grid ColumnDefinitions="3*,7*" BackgroundColor="AliceBlue">
+                                <Label Grid.Column="0" Text="{Binding OfficeType}" FontSize="Title" FontAttributes="Bold"/>
+                                <Label Grid.Column="1" Text="{Binding NameOffice}" FontSize="Title" FontAttributes="Bold"/>
+                            </Grid>
+                            <Grid ColumnDefinitions="4.5*,1*,4.5*">
+                                <Label Grid.Column="0" Text="{Binding City}" HorizontalOptions="End"/>
+                                <Label Grid.Column="1" Text=" - " HorizontalOptions="Center"/>
+                                <Label Grid.Column="2" Text="{Binding Department}" HorizontalOptions="Start"/>
+                            </Grid>
+                            <Grid ColumnDefinitions="3*,7*">
+                                <Label Grid.Column="0" Text="Dirección: "/>
+                                <Label Grid.Column="1" Text="{Binding Address}"/>    
+                            </Grid>
+                            <Grid ColumnDefinitions="3*,7*">
+                                <Label Grid.Column="0" Text="Teléfono: "/>
+                                <Label Grid.Column="1" Text="{Binding Telephone}"/>
+                            </Grid>
+                            <!--Separador-->
+                            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Black"/>
+                            <Label Text="Horario de atención:"/>
+                            <Label Text="{Binding OfficeHours}"/>
+
+                            <!--<Label Text="{Binding Latitude, StringFormat='Latitud: {0:F2}'}"/>-->
+                            <!--<Label Text="{Binding Longitude, StringFormat='Longitud: {0:F2}'}"/>-->
+                            
+                        </StackLayout>
+                    </Frame>
+                    <BoxView BackgroundColor="Transparent" HeightRequest="3" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:OfficesViewModel}}, Path=OfficeTappedCommand}"
+                                          CommandParameter="{Binding .}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:DataType="models:Office"
+                x:Key="ClientOneToFiveTemplate">
+                <StackLayout>
+                    <Frame CornerRadius="15"
+                       BackgroundColor="LightCoral">
+                        <StackLayout>
+                            <Frame CornerRadius="10"
+                                   Margin="10"
+                                   Padding="10"
+                                   HasShadow="True">
+
+                                <StackLayout Orientation="Vertical">
+                                    <Image Source="{local:ImageResource HolaMundoApp.Resources.Images.img_donmatias.jpg}" HeightRequest="200" Aspect="AspectFill"/>
+                                    <Label Text="{Binding NameOffice}" FontSize="Title" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Address}"/>
+                                    <Label Text="{Binding Telephone}"/>
+                                    <Label Text="{Binding OfficeHours}"/>
+                                    <Label Text="{Binding Department}"/>
+                                    <Label Text="{Binding City}"/>
+                                    <Label Text="{Binding Latitude, StringFormat='Latitud: {0:F2}'}"/>
+                                    <Label Text="{Binding Longitude, StringFormat='Longitud: {0:F2}'}"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+                    <BoxView BackgroundColor="Transparent" HeightRequest="5" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:OfficesViewModel}}, Path=OfficeTappedCommand}"
+                      CommandParameter="{Binding .}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:DataType="models:Office"
+                x:Key="ClientSixToTenTemplate">
+                <StackLayout>
+                    <Frame CornerRadius="15"
+                       BackgroundColor="LightGreen">
+                        <StackLayout>
+                            <Frame CornerRadius="10"
+                                   Margin="10"
+                                   Padding="10"
+                                   HasShadow="True">
+
+                                <StackLayout Orientation="Vertical">
+                                    <Image Source="{local:ImageResource HolaMundoApp.Resources.Images.img_donmatias.jpg}" HeightRequest="200" Aspect="AspectFill"/>
+                                    <Label Text="{Binding NameOffice}" FontSize="Title" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Address}"/>
+                                    <Label Text="{Binding Telephone}"/>
+                                    <Label Text="{Binding OfficeHours}"/>
+                                    <Label Text="{Binding Department}"/>
+                                    <Label Text="{Binding City}"/>
+                                    <Label Text="{Binding Latitude, StringFormat='Latitud: {0:F2}'}"/>
+                                    <Label Text="{Binding Longitude, StringFormat='Longitud: {0:F2}'}"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+                    <BoxView BackgroundColor="Transparent" HeightRequest="5" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:OfficesViewModel}}, Path=OfficeTappedCommand}"
+                      CommandParameter="{Binding .}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </DataTemplate>
+
+            <controls:ClientTemplateSelector
+                x:Key="ClientTemplateSelector"
+                DefaultTemplate="{StaticResource ClientDefaultTemplate}"
+                OneToFiveTemplate="{StaticResource ClientOneToFiveTemplate}"
+                SixToTenTemplate="{StaticResource ClientSixToTenTemplate}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+
+        <Grid>
+            <!--Page Content-->
+            <StackLayout IsVisible="{Binding IsNotBusy}" VerticalOptions="FillAndExpand">
+                <CollectionView ItemsSource="{Binding Offices}"
+                        EmptyView="No Clients to display"                 
+                        ItemTemplate="{StaticResource ClientTemplateSelector}">
+                    <CollectionView.Header>
+                        <Grid ColumnDefinitions="*" Margin="0,10">
+                            <Label Text="Listado de Oficinas" TextColor="Black" HorizontalOptions="Center" FontAttributes="Bold"/>
+                        </Grid>
+                    </CollectionView.Header>
+                </CollectionView>
+            </StackLayout>
+            <!--Loading Indicator-->
+            <ActivityIndicator IsRunning="{Binding IsBusy}" VerticalOptions="Center"/>
+        </Grid>
+
     </ContentPage.Content>
+
 </ContentPage>
