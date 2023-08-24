@@ -4,6 +4,7 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:viewModels="clr-namespace:HolaMundoApp.ViewModels"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:local="clr-namespace:HolaMundoApp;assembly=HolaMundoApp"
              x:DataType="viewModels:OfficeViewModel"
              Title="Detalle Oficina"
              x:Class="HolaMundoApp.Views.OfficePage">
@@ -11,35 +12,46 @@
         <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
     </ContentPage.Behaviors>
     <ContentPage.Content>
-        <StackLayout Padding="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            
+        <StackLayout Padding="8" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray">            
             <Frame CornerRadius="8"
                    Margin="2"
                    Padding="10"
                    HasShadow="True">
                 <StackLayout>
                     <Label Text="{Binding Office.NameOffice}"
-                            VerticalOptions="Start" 
-                            HorizontalOptions="Center" 
-                            Style="{StaticResource Heading1}"/>
+                           VerticalOptions="Start" 
+                           HorizontalOptions="Center" 
+                           Style="{StaticResource Heading1}"/>
                     <Grid ColumnDefinitions="4.5*,1*,4.5*">
-                        <Label Grid.Column="0" Text="{Binding Office.City}" HorizontalOptions="End"/>
-                        <Label Grid.Column="1" Text=" - " HorizontalOptions="Center"/>
-                        <Label Grid.Column="2" Text="{Binding Office.Department}" HorizontalOptions="Start"/>
-                    </Grid>
-                    <Grid ColumnDefinitions="3*,7*">
-                        <Label Grid.Column="0" Text="Dirección: "/>
-                        <Label Grid.Column="1" Text="{Binding Office.Address}"/>
-                    </Grid>
-                    <Grid ColumnDefinitions="3*,7*">
-                        <Label Grid.Column="0" Text="Teléfono: "/>
-                        <Label Grid.Column="1" Text="{Binding Office.Telephone}"/>
+                        <Label Grid.Column="0" Text="{Binding Office.City}" HorizontalOptions="End" TextColor="LightSlateGray" FontAttributes="Bold"/>
+                        <Label Grid.Column="1" Text=" - " HorizontalOptions="Center" TextColor="LightSlateGray" FontAttributes="Bold"/>
+                        <Label Grid.Column="2" Text="{Binding Office.Department}" HorizontalOptions="Start" TextColor="LightSlateGray" FontAttributes="Bold"/>
                     </Grid>
                     <!--Separador-->
-                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Black"/>
-                    <Label Text="Horario de atención:"/>
-                    <Label Text="{Binding Office.OfficeHours}"/>
-                </StackLayout>
+                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" Color="LightGray"/>
+                    <Grid ColumnDefinitions="3*,7*">
+                        <Label Grid.Column="0" Text="Dirección: " FontAttributes="Bold" TextColor="#002c9c"/>
+                        <Label Grid.Column="1" Text="{Binding Office.Address}" TextColor="LightSlateGray"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="3*,4*,3*">
+                        <Label Grid.Column="0" Text="Teléfono: " FontAttributes="Bold" TextColor="#002c9c"/>
+                        <Label Grid.Column="1" Text="{Binding Office.Telephone}" TextColor="LightSlateGray"/>
+                        <Button Grid.Column="2" 
+                                ImageSource="{local:ImageResource HolaMundoApp.Resources.Images.icon_phone.png}" 
+                                VerticalOptions="Center"
+                                CornerRadius="8"
+                                BackgroundColor="Transparent"
+                                BorderColor="#002c9c"
+                                BorderWidth="2"
+                                Margin="20,0,20,0"
+                                HeightRequest="30"/>
+                        <!--<Image Grid.Column="2" Source="{local:ImageResource HolaMundoApp.Resources.Images.icon_phone.png}" HeightRequest="35" Aspect="AspectFit"/>-->
+                    </Grid>
+                    <!--Separador-->
+                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" Color="LightGray"/>
+                    <Label Text="Horario de atención:" FontAttributes="Bold" TextColor="#002c9c"/>
+                    <Label Text="{Binding Office.OfficeHours}" TextColor="LightSlateGray"/>                    
+                </StackLayout>                
             </Frame>
             <maps:Map x:Name="OfficeLocationMap" IsShowingUser="True"/>
         </StackLayout>       

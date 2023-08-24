@@ -14,6 +14,7 @@
     <Style x:Key="Heading1" TargetType="Label">
         <Setter Property="FontFamily" Value="OpenSans" />
         <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="#002c9c" />
         <Setter Property="FontSize" Value="18" />
     </Style>
 

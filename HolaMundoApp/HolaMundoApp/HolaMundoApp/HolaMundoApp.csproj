@@ -8,11 +8,13 @@
 
   <ItemGroup>
     <None Remove="Resources\Images\icon_movil.png" />
+    <None Remove="Resources\Images\icon_phone.png" />
     <None Remove="Resources\Images\img_donmatias.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\Images\icon_movil.png" />
+    <EmbeddedResource Include="Resources\Images\icon_phone.png" />
     <EmbeddedResource Include="Resources\Images\img_donmatias.jpg" />
   </ItemGroup>
 

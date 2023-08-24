@@ -13,18 +13,19 @@
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Image Source="{local:ImageResource HolaMundoApp.Resources.Images.icon_movil.png}" WidthRequest="200" HeightRequest="200" />
-            <Entry BackgroundColor="Aqua"
+            <Image Source="{local:ImageResource HolaMundoApp.Resources.Images.icon_movil.png}" WidthRequest="250" HeightRequest="250" />
+            <Entry BackgroundColor="DarkGray"
                    Text="{Binding UserName}" 
                    Placeholder="UserName" 
                    Margin="10" 
                    TextColor="Black"/>
-            <Entry Text="{Binding Password}" 
+            <Entry BackgroundColor="DarkGray"
+                   Text="{Binding Password}" 
                    Placeholder="Password" 
                    IsPassword="True" 
                    Margin="10" 
                    TextColor="Black"/>
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}" CornerRadius="20"/>
+            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}" CornerRadius="20" Margin="10"/>
             <Button Text="Olvidé mi contraseña" BackgroundColor="Transparent" TextColor="Blue"/>
             <!--<Button Text="Iniciar sesión" Clicked="OnLoginButtonClicked" Margin="10"/>-->
         </StackLayout>
