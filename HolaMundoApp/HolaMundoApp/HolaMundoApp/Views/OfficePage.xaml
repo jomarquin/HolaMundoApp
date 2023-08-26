@@ -36,7 +36,7 @@
                     <Grid ColumnDefinitions="3*,4*,3*">
                         <Label Grid.Column="0" Text="Teléfono: " FontAttributes="Bold" TextColor="#002c9c"/>
                         <Label Grid.Column="1" Text="{Binding Office.Telephone}" TextColor="LightSlateGray"/>
-                        <Button Grid.Column="2" 
+                        <Button Grid.Column="2"
                                 ImageSource="{local:ImageResource HolaMundoApp.Resources.Images.icon_phone.png}" 
                                 Command="{Binding CallCommand}"
                                 VerticalOptions="Center"
