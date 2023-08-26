@@ -34,10 +34,6 @@ namespace HolaMundoApp
                 NullValueHandling = NullValueHandling.Ignore
             }));
 
-            serviceCollection.AddRefitClient<IClientApi>(refitSettings)
-                .ConfigureHttpClient(c => c.BaseAddress = new Uri(Settings.ApiBaseUri))
-                .AddHttpMessageHandler<BaseAddressHandler>();
-
             serviceCollection.AddRefitClient<IAccountApi>(refitSettings)
                 .ConfigureHttpClient(c => c.BaseAddress = new Uri(Settings.ApiBaseUri))
                 .AddHttpMessageHandler<BaseAddressHandler>();

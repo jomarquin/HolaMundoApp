@@ -6,30 +6,29 @@ namespace HolaMundoApp.Controls
     public class ClientTemplateSelector : DataTemplateSelector
     {
         public DataTemplate DefaultTemplate { get; set; }
-        public DataTemplate OneToFiveTemplate { get; set; }
-        public DataTemplate SixToTenTemplate { get; set; }
+        public DataTemplate CNBTemplate { get; set; }
+        public DataTemplate OfficeTemplate { get; set; }
 
-        protected override DataTemplate OnSelectTemplate(object clientObject, BindableObject container)
+        protected override DataTemplate OnSelectTemplate(object officeObject, BindableObject container)
         {
-            if (!(clientObject is Client client))
+            if (!(officeObject is Office office))
             {
                 return DefaultTemplate;
             }
 
-            var dnaLength = client.Dna.Length;
-            var lastDigit = client.Dna.Substring(dnaLength - 1);
+            var officeType = office.OfficeType;
 
-            if (int.TryParse(lastDigit, out var intValue))
+            if (officeType != null )
             {
 
-                if (intValue > 0 && intValue <= 5)
+                if (officeType == "CNB")
                 {
-                    return OneToFiveTemplate;
+                    return CNBTemplate;
                 }
 
-                if (intValue > 5 && intValue <= 10)
+                if (officeType == "OFICINA")
                 {
-                    return SixToTenTemplate;
+                    return OfficeTemplate;
                 }
             }
 

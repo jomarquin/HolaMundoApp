@@ -37,7 +37,7 @@ namespace HolaMundoApp.ViewModels
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
             if (ValidateFields() && await _accountService.LoginAsync(UserName, Password))
             {
-                await Shell.Current.GoToAsync($"//{nameof(ClientsPage)}");
+                await Shell.Current.GoToAsync($"//{nameof(OfficesPage)}");
             }
             else
             {

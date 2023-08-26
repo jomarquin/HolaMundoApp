@@ -67,7 +67,7 @@
                             <Frame Padding="-11,-11,-11,0" HasShadow="False">
                                 <Image Source="{Binding UrlImage}" HeightRequest="200" Aspect="AspectFill" />
                             </Frame>
-                            <Grid ColumnDefinitions="4*,6*" BackgroundColor="AliceBlue">
+                            <Grid ColumnDefinitions="4*,6*" BackgroundColor="LightSalmon">
                                 <Label Grid.Column="0" Text="{Binding OfficeType}" FontSize="Title" FontAttributes="Bold" TextColor="#002c9c"/>
                                 <Label Grid.Column="1" Text="{Binding NameOffice}" FontSize="Title" FontAttributes="Bold" TextColor="#002c9c"/>
                             </Grid>
@@ -104,7 +104,7 @@
                             <Frame Padding="-11,-11,-11,0" HasShadow="False">
                                 <Image Source="{Binding UrlImage}" HeightRequest="200" Aspect="AspectFill" />
                             </Frame>
-                            <Grid ColumnDefinitions="4*,6*" BackgroundColor="AliceBlue">
+                            <Grid ColumnDefinitions="4*,6*" BackgroundColor="LightBlue">
                                 <Label Grid.Column="0" Text="{Binding OfficeType}" FontSize="Title" FontAttributes="Bold" TextColor="#002c9c"/>
                                 <Label Grid.Column="1" Text="{Binding NameOffice}" FontSize="Title" FontAttributes="Bold" TextColor="#002c9c"/>
                             </Grid>
@@ -132,8 +132,8 @@
             <controls:ClientTemplateSelector
                 x:Key="ClientTemplateSelector"
                 DefaultTemplate="{StaticResource ClientDefaultTemplate}"
-                OneToFiveTemplate="{StaticResource ClientOneToFiveTemplate}"
-                SixToTenTemplate="{StaticResource ClientSixToTenTemplate}"/>
+                CNBTemplate="{StaticResource ClientOneToFiveTemplate}"
+                OfficeTemplate="{StaticResource ClientSixToTenTemplate}"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
