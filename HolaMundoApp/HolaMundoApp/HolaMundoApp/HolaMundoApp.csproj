@@ -10,12 +10,14 @@
     <None Remove="Resources\Images\icon_movil.png" />
     <None Remove="Resources\Images\icon_phone.png" />
     <None Remove="Resources\Images\img_donmatias.jpg" />
+    <None Remove="Resources\Images\lugar_cercano.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\Images\icon_movil.png" />
     <EmbeddedResource Include="Resources\Images\icon_phone.png" />
     <EmbeddedResource Include="Resources\Images\img_donmatias.jpg" />
+    <EmbeddedResource Include="Resources\Images\lugar_cercano.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,6 +56,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ClientsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ClosestPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\OfficePage.xaml">

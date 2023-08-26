@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" 
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:viewModels="clr-namespace:HolaMundoApp.ViewModels"
+             x:DataType="viewModels:ClosestViewModel"
+             xmlns:utility="clr-namespace:HolaMundoApp.Utilities" 
+             xmlns:models="clr-namespace:HolaMundoApp.Data.Models"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             Title="Lugar más cercano"
+             x:Class="HolaMundoApp.Views.ClosestPage">
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
+    </ContentPage.Behaviors>
+    <ContentPage.Content>
+        <StackLayout>
+            <Image Source="lugar_cercano.png" HeightRequest="200" HorizontalOptions="Center"  Aspect="AspectFill"/>
+
+            <Button Text="Buscar Oficina más Cercana" Command="{Binding OfficeClosestCommand}" CornerRadius="10" Margin="5,0,5,0"/>
+            <Button Text="Buscar Corresponsal más Cercano" Command="{Binding CnbClosestCommand}"  CornerRadius="10" Margin="5,0,5,0"/>
+
+            <Label Text="Lugar Mas Cercano" HorizontalOptions="CenterAndExpand"/>
+
+            <maps:Map x:Name="MapClosest"
+                      VerticalOptions="FillAndExpand"
+                      IsShowingUser="true">
+            </maps:Map>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

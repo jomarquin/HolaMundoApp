@@ -95,6 +95,9 @@
     <FlyoutItem Title="Oficinas" Icon="icon_office.png">
         <ShellContent Route="OfficesPage" ContentTemplate="{DataTemplate local:OfficesPage}" />
     </FlyoutItem>
+    <FlyoutItem Title="Más Cercano" Icon="icon_about.png">
+        <ShellContent Route="ClosestPage" ContentTemplate="{DataTemplate local:ClosestPage}" />
+    </FlyoutItem>
     <FlyoutItem Title="Acerca de" Icon="icon_about.png">
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
     </FlyoutItem>

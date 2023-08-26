@@ -13,6 +13,7 @@ namespace HolaMundoApp
             InitializeComponent();
             Routing.RegisterRoute(nameof(ClientPage), typeof(ClientPage));
             Routing.RegisterRoute(nameof(OfficePage), typeof(OfficePage));
+            Routing.RegisterRoute(nameof(ClosestPage), typeof(ClosestPage));
 
         }
 

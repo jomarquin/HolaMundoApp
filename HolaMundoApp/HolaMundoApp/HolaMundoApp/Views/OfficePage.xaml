@@ -38,13 +38,14 @@
                         <Label Grid.Column="1" Text="{Binding Office.Telephone}" TextColor="LightSlateGray"/>
                         <Button Grid.Column="2" 
                                 ImageSource="{local:ImageResource HolaMundoApp.Resources.Images.icon_phone.png}" 
+                                Command="{Binding CallCommand}"
                                 VerticalOptions="Center"
                                 CornerRadius="8"
                                 BackgroundColor="Transparent"
                                 BorderColor="#002c9c"
                                 BorderWidth="2"
-                                Margin="20,0,20,0"
-                                HeightRequest="30"/>
+                                Margin="30,0,30,0"
+                                HeightRequest="40"/>
                         <!--<Image Grid.Column="2" Source="{local:ImageResource HolaMundoApp.Resources.Images.icon_phone.png}" HeightRequest="35" Aspect="AspectFit"/>-->
                     </Grid>
                     <!--Separador-->
